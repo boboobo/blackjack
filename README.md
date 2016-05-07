@@ -1,5 +1,1 @@
-/* 
-
-I make a game
-
-*/
+Blackjack game
