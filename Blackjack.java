@@ -30,8 +30,7 @@ public class Blackjack {
 		
 		String answer;
 		answer = scanner.nextLine();
-		
-		if (answer!="Y"){
+		if (answer.equals("N")){
 			System.out.println("Good bye");
 			break;
 		}
