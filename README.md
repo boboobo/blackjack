@@ -1,1 +1,1 @@
-# Blackjack game (Smile)
+# Blackjack game 
