@@ -16,21 +16,21 @@ public class Player {
 	}
 	
 	
-	public int bet(Player p1){
+	public int bet(Player p){
 		while(true){
-			System.out.println("How much do you want to bet?");
+			System.out.printf("%s, How much do you want to bet?",p.name);
 			try{
 				Scanner scanner = new Scanner(System.in);
 				int input = scanner.nextInt();
-				p1.bet = p1.bet + input;
+				p.bet = p.bet + input;
 				
-				if(p1.money<p1.bet){
+				if(p.money<p.bet){
 					System.out.println("Not enough money. Please rebet");
-					p1.bet = p1.bet - input;
+					p.bet = p.bet - input;
 					continue;
 				}
 				else{
-					System.out.printf("%s bet %d$%n",p1.name, input);
+					System.out.printf("%s bet %d$%n",p.name, input);
 					
 					return input;
 					
@@ -46,26 +46,26 @@ public class Player {
 	}
 	
 	
-	  public static int play_human(Player p1){
+	  public static int play_human(Player p){
 		    Scanner in = new Scanner(System.in);
 		    int card[] = new int []{1,2,3,4,5,6,7,8,9,10,10,10,10};
 		    
 		    int human_card1 = card[(int)(Math.random()*12)];
 		    int human_card2 = card[(int)(Math.random()*12)];
 		    int human_total = human_card1 + human_card2;
-		    System.out.printf(p1.name+" got ");
+		    System.out.printf(p.name+" got ");
 		    System.out.println(human_card1+" and "+human_card2);
-	        p1.bet=p1.bet+p1.bet(p1);
-	        System.out.printf("Total bet is %d%n",p1.bet);
+	        p.bet=p.bet+p.bet(p);
+	        System.out.printf("%s's total bet is %d%n",p.name , p.bet);
 		    
 		    for(int i =1 ; i <4 ; ++i){
 		      System.out.println("Do you want another card (Y/N)");
 		      String s = in.nextLine();
 		      if(s.equals("Y")){
 		        human_total = human_total + card[(int)(Math.random()*12)];
-		        System.out.printf("%S's total is %d%n", p1.name , human_total);
-		        p1.bet=p1.bet+p1.bet(p1);
-		        System.out.printf("Total bet is %d%n",p1.bet);
+		        System.out.printf("%S's total is %d%n", p.name , human_total);
+		        p.bet=p.bet+p.bet(p);
+		        System.out.printf("Total bet is %d%n",p.bet);
 
 		      }
 		      if(s.equals("N")){
