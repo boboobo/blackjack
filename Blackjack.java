@@ -21,12 +21,17 @@ public class Blackjack {
 		
 
 		System.out.printf("Computer has %d$%n",c1.money);
-		c1.bet = c1.bet();
 		c1.total = c1.play_computer();
 		
 		Cal_Win(p1, c1);
+		if (p1.money>0 && c1.money>0){
+			
+			System.out.println("Play again? (Y/N)");
+		}
+		else{
+			System.out.println("There's no money. Game is done. Good bye");
+		}
 		
-		System.out.println("Play again? (Y/N)");
 		
 		String answer;
 		answer = scanner.nextLine();
@@ -45,16 +50,16 @@ public class Blackjack {
 		  if(p1.total>c1.total && p1.total<22){
 			  System.out.printf("%S Win!%n", p1.name);
 			  p1.money = p1.money + p1.bet;
-			  c1.money = c1.money - c1.bet;
+			  c1.money = c1.money - p1.bet;
 			  System.out.printf("%s get %d$. Total is %d$%n",p1.name,p1.bet,p1.money);
-			  System.out.printf("Computer lose %d$. Total is %d$%n", c1.bet,c1.money);
+			  System.out.printf("Computer lose %d$. Total is %d$%n", p1.bet,c1.money);
 		  }
 		  else{
 			  System.out.printf("Computer Win!%n");
-			  c1.money = c1.money + c1.bet;
+			  c1.money = c1.money + p1.bet;
 			  p1.money = p1.money - p1.bet;
 			  System.out.printf("%s lose %d$. Total is %d$%n",p1.name,p1.bet,p1.money);
-			  System.out.printf("Computer get %d$. Total is %d$%n", c1.bet,c1.money);			  
+			  System.out.printf("Computer get %d$. Total is %d$%n", p1.bet,c1.money);			  
 		  }
 		  
 		  

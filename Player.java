@@ -22,15 +22,15 @@ public class Player {
 			try{
 				Scanner scanner = new Scanner(System.in);
 				int input = scanner.nextInt();
+				p1.bet = p1.bet + input;
 				
-				if(p1.money<input){
+				if(p1.money<p1.bet){
 					System.out.println("Not enough money. Please rebet");
+					p1.bet = p1.bet - input;
 					continue;
 				}
 				else{
 					System.out.printf("%s bet %d$%n",p1.name, input);
-					
-					p1.money=p1.money-p1.bet;
 					
 					return input;
 					
@@ -55,6 +55,8 @@ public class Player {
 		    int human_total = human_card1 + human_card2;
 		    System.out.printf(p1.name+" got ");
 		    System.out.println(human_card1+" and "+human_card2);
+	        p1.bet=p1.bet+p1.bet(p1);
+	        System.out.printf("Total bet is %d%n",p1.bet);
 		    
 		    for(int i =1 ; i <4 ; ++i){
 		      System.out.println("Do you want another card (Y/N)");
@@ -62,7 +64,8 @@ public class Player {
 		      if(s.equals("Y")){
 		        human_total = human_total + card[(int)(Math.random()*12)];
 		        System.out.printf("%S's total is %d%n", p1.name , human_total);
-		        p1.bet=p1.bet(p1);
+		        p1.bet=p1.bet+p1.bet(p1);
+		        System.out.printf("Total bet is %d%n",p1.bet);
 
 		      }
 		      if(s.equals("N")){
@@ -85,13 +88,7 @@ class Computer extends Player{
 		}
 	
 	
-	public static int bet(){
-		
-		int ran = (int)(Math.random()*10+1);
-		System.out.printf("Computer bet %d$%n", ran);
-		return ran;
-	}
-	
+
 	
 	
 	 public static int play_computer(){
